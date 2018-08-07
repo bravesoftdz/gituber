@@ -64,9 +64,9 @@ class Main extends Component {
   };
 
   handleMapClick = (e) => {
-    const [latitude, longitude] = e.lngLat;
-    console.log(latitude);
-    console.log(longitude);
+    const [longitude, latitude] = e.lngLat;
+    console.log('latitude',latitude);
+    console.log('longitude',longitude);
 
     this.setState({
       latitude,
