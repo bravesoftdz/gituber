@@ -41,7 +41,7 @@ class Main extends Component {
       zoom: 14,
     },
     open: false,
-    username: 'lucasdu4rte',
+    username: '',
     latitude: '',
     longitude: '',
   };
@@ -65,8 +65,6 @@ class Main extends Component {
 
   handleMapClick = (e) => {
     const [longitude, latitude] = e.lngLat;
-    console.log('latitude',latitude);
-    console.log('longitude',longitude);
 
     this.setState({
       latitude,
