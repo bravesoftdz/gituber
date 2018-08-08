@@ -10,7 +10,7 @@ import { bindActionCreators } from 'redux';
 import { Creators as UserActions } from '../../store/ducks/users';
 
 import {
-  Avatar, ListContainer, Item, Form,
+  Avatar, ListContainer, Item, Form, FormContainer,
 } from './styles';
 
 class Main extends Component {
@@ -108,24 +108,20 @@ class Main extends Component {
             <Item key={user.id}>
               <img src={user.avatar_url} alt={user.login} />
               <div className="infos">
-                <span className="name">
-                  {user.name}
-                </span>
-                <span className="username">
-                  {user.login}
-                </span>
+                <span className="name">{user.name}</span>
+                <span className="username">{user.login}</span>
               </div>
               <div className="buttons">
                 <button
                   type="button"
-                  className="text-danger"
+                  className="button text-danger"
                   onClick={() => this.props.removeUser(user.id)}
                 >
                   <i className="fas fa-times-circle" />
                 </button>
-                <button type="button" className="text-muted" onClick={() => {}}>
+                <a href={user.html_url} target="_blank" rel="noopener noreferrer" className="button text-muted">
                   <i className="fas fa-angle-right" />
-                </button>
+                </a>
               </div>
             </Item>
           ))}
@@ -149,25 +145,34 @@ class Main extends Component {
             </Marker>
           ))}
         </MapGL>
-        <Modal open={open} onClose={this.onCloseModal} center>
-          <div style={{ width: 320 }}>
-            <h2>
-Adicionar novo Usuário
-            </h2>
+        <Modal
+          styles={{ modal: { borderRadius: '5px' } }}
+          open={open}
+          onClose={this.onCloseModal}
+          center
+          showCloseIcon={false}
+        >
+          <FormContainer>
+            <h4 className="title">Adicionar novo Usuário</h4>
             <Form onSubmit={this.handleOnSubmit}>
               <input
                 type="text"
                 id="username"
                 name="username"
-                placeholder="Digite o usuário do GitHub"
+                placeholder="Usuário no GitHub"
                 value={this.state.username}
                 onChange={e => this.setState({ username: e.target.value })}
               />
-              <button type="submit">
-Adicionar
-              </button>
+              <div className="buttons">
+                <button className="cancel" type="button" onClick={this.onCloseModal}>
+                  Cancelar
+                </button>
+                <button className="submit" type="submit">
+                  Salvar
+                </button>
+              </div>
             </Form>
-          </div>
+          </FormContainer>
         </Modal>
         <ToastContainer />
       </Fragment>

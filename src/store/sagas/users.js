@@ -30,5 +30,9 @@ export function* addUser(action) {
     }
   } catch (err) {
     yield put(UsersActions.addUserFailure('Erro ao cadastrar novo usuário'));
+    yield put({
+      type: ToastTypes.SHOW_TOAST,
+      toast: ToastsActions.buildToast('Erro ao cadastrar novo usuário', ToastTypes.ERROR),
+    });
   }
 }

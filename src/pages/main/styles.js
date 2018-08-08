@@ -51,7 +51,13 @@ export const Item = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    button {
+    a.button {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      text-decoration: none;
+    }
+    .button {
       cursor: pointer;
       border: none;
       height: 32px;
@@ -75,25 +81,55 @@ export const Item = styled.div`
   }
 `;
 
+export const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  .title {
+    text-align: center;
+  }
+`;
+
 export const Form = styled.form`
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: column;
   input {
-    font-size: 22px;
+    font-size: 16px;
     border: 1px solid #dfe4ea;
     padding: 5px 10px;
     border-radius: 3px;
   }
-  button {
+  div.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  button.cancel {
     margin-top: 10px;
+    margin-right: 5px;
     color: #fff;
-    background: #84c47c;
-    font-size: 22px;
+    background: #cccccc;
+    font-size: 16px;
     font-weight: bold;
     border-radius: 3px;
     border: 0;
     height: 40px;
+    flex-grow: 1;
+    cursor: pointer;
+  }
+  button.submit {
+    margin-top: 10px;
+    margin-left: 5px;
+    color: #fff;
+    background: #84c47c;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 3px;
+    border: 0;
+    height: 40px;
+    flex-grow: 1;
+    cursor: pointer;
   }
 `;
